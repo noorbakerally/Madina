@@ -1,0 +1,66 @@
+<div data-role="dialog" id="setDate">
+	<script type="text/javascript">
+		$("#setDate").live( 'pageinit',
+		function(event)
+		{
+			for (var i=1;i<=31;i++)
+			{
+				y=i+2011;
+ 				$('#day').append($("<option></option>").attr("value",i).text(i)); 
+ 				$('#year').append($("<option></option>").attr("value",y).text(y)); 
+			}
+		});
+              $("#showUserTime").live( 'click',
+                function(event)
+                {
+                     var month=$("#month option:selected").val();
+                     var day=$("#day option:selected").val();
+                     var year=$("#year option:selected").val();
+                     if (month=="Month" || day=="Day" || year=="Year")
+                     {
+                        $("#error").html("Please choose a proper date");
+                        return;
+                     }
+                     else
+                     {
+                        var date=day+"#"+month+"#"+year;
+                        localStorage.setItem('date',date);
+		        $.mobile.changePage('showTime.html');
+		     }
+                });
+	</script>
+
+	<div data-role="header">
+		<h1>Custom Time</h1>
+	</div>
+	<div data-role="content" align="center">
+		<div id="error"></div>
+		<fieldset data-type="horizontal" data-role="controlgroup" class="localnav">
+			<select id="day" name="select-choice-day">
+				<option value="Day">Day</option>
+			</select>
+			<select id="month" name="select-choice-month">
+				<option value="Month">Month</option>
+				<option value="1">Jan</option>
+				<option value="2">Feb</option>
+				<option value="3">Mar</option>
+				<option value="4">Apr</option>
+				<option value="5">May</option>
+				<option value="6">Jun</option>
+				<option value="7">Jul</option>
+				<option value="8">Aug</option>
+				<option value="9">Sep</option>
+				<option value="10">Oct</option>
+				<option value="11">Nov</option>
+				<option value="12">Dec</option>
+			</select>
+			<select id="year" name="select-choice-year">
+				<option value="Year">Year</option>
+			</select>
+		</fieldset>
+		<div data-role="controlgroup" data-type="horizontal" align="center" id="registerControls" >
+			<input type="button" value="Show Times" id="showUserTime"/>
+			<a data-role="button" data-rel="back"/>Cancel</a>
+		</div>
+	</div>
+</div>

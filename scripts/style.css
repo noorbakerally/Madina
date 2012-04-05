@@ -1,0 +1,23 @@
+.localnav {
+        margin:0 0 20px 0;
+        overflow:hidden;
+}
+.localnav li {
+        float:left;
+}
+.localnav .ui-btn-inner {
+        padding: .6em 10px;
+        font-size:80%;
+}
+
+#desktop
+{
+  max-width:300px; 
+  min-width:200px;
+}
+
+#error
+{
+  color:red;
+  font-weight:bold;
+}

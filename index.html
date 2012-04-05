@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+      <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>
+			Madina
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="scripts/jquery.mobile.min.css" />
+		<link rel="stylesheet" href="scripts/style.css" />
+		<script src="scripts/jquery.js"></script>
+		<script src="scripts/jquery.mobile.min.js"></script>
+     		<script src="scripts/custom.js"></script>
+		<script src="scripts/PrayTimes.js"></script>
+		<script type="text/javascript">
+			$("#showTime").live( 'pageshow',
+			function(event)
+			{
+				for (var i=1;i<=31;i++)
+				{
+					y=i+2011;
+					$('#day').append($("<option></option>").attr("value",i).text(i));
+					$('#year').append($("<option></option>").attr("value",y).text(y));
+				}
+				today=new Date();
+				var date=today.getDate();
+				var month=today.getMonth()+1;
+				var year=today.getFullYear();
+				$("#day").val(date).trigger("change");	
+				$("#month").val(month).trigger("change");
+				$("#year").val(year).trigger("change");
+				calculateTime(today);	
+			});
+		</script>
+	</head>
+      <body>
+		
+	      <!--main page -->
+	      <div data-role="page" id="main">
+			<div data-role="header">
+				<h1>Madina</h1>
+				<div data-role="navbar">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="index.html">News Today</a></li>
+						<li><a href="contactUs.html">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="content" align="center">
+			    <div id="desktop">
+				<div data-role="controlgroup">
+					<a href="qibla" data-role="button">Qibla</a>
+					<a href="#showTime" data-role="button">Salaat Time</a>
+					<a href="index.html" data-role="button">Masjids</a>
+					<a href="index.html" data-role="button">Halaal Eating Places</a>
+				</div>
+			    </div>
+			</div>
+			<div data-role="footer" class="footer">	
+			   <p align="center">Madina</p>		
+			</div>
+	     </div>
+
+	     <!--show time page -->
+	     <div data-role="page" id="showTime">
+		 <div data-role="content" align="center">
+			<fieldset data-type="horizontal" data-role="controlgroup" class="localnav">
+				<select onchange="updateTime()" id="day" name="select-choice-day">
+					<option value="Day">Day</option>
+				</select>
+				<select onchange="updateTime()" id="month" name="select-choice-month">
+					<option value="Month">Month</option>
+					<option value="1">Jan</option>
+					<option value="2">Feb</option>
+					<option value="3">Mar</option>
+					<option value="4">Apr</option>
+					<option value="5">May</option>
+					<option value="6">Jun</option>
+					<option value="7">Jul</option>
+					<option value="8">Aug</option>
+					<option value="9">Sep</option>
+					<option value="10">Oct</option>
+					<option value="11">Nov</option>
+					<option value="12">Dec</option>
+				</select>
+				<select onchange="updateTime()" id="year" name="select-choice-year">
+					<option value="Year">Year</option>
+				</select>
+			</fieldset>
+			 <div id="desktop">
+                                        <div class="localnav">
+                                            <select onchange="update()" data-native-menu="false" class="localnav">
+                                                <option selected="selected" value="MWL">Muslim World League (MWL)</option>
+                                                <option value="ISNA">Islamic Society of North America (ISNA)</option>
+                                                <option value="Egypt">Egyptian General Authority of Survey</option>
+                                                <option value="Makkah">Umm al-Qura University, Makkah</option>
+                                                <option value="Karachi">University of Islamic Sciences, Karachi</option>
+                                            </select>
+                                           <select onchange="update()" data-native-menu="false">
+                                                <option value="Makkah">Hanafi</option>
+                                                <option value="Karachi">Others</option>
+                                            </select>
+                                        </div>
+                                        <ul data-role="controlgroup" id="timeDetails">
+                                           <li><a data-role="button">Fajr <span id="Fajr"></span></a></li>
+                                           <li><a data-role="button">Sunrise <span id="Sunrise"></span></a></li>
+                                           <li><a data-role="button">Zohr <span id="Dhuhr"></span></a></li>
+                                           <li><a data-role="button">Asr <span id="Asr"></span></a></li>
+                                           <li><a data-role="button">Maghrib <span id="Maghrib"></span></a></li>
+                                           <li><a data-role="button">Isha <span id="Isha"></span></a></li>
+                                         </ul>
+                                  </div>
+
+		
+		 </div>
+             </div>
+    </body>
+</html>

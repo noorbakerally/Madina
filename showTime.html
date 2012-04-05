@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+      <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <title>
+                        Madina
+                </title>
+                <meta name="viewport" content="width=device-width, initial-scale=1"> 
+                <link rel="stylesheet" href="scripts/jquery.mobile.min.css" />
+                <link rel="stylesheet" href="scripts/style.css" />
+                <script src="scripts/jquery.js"></script>
+                <script src="scripts/jquery.mobile.min.js"></script>
+                <script src="scripts/PrayTimes.js"></script>
+		<script type="text/javascript">
+			$("#showTime").live( 'pageshow',
+			function(event)
+			{
+				var html="";
+				var date=localStorage.getItem("date");
+				var date = new Date(); // today
+				var times = prayTimes.getTimes(date, [-20, 57], -5);
+				var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha', 'Midnight'];
+				for(var i in list)
+				{
+					$("#"+list[i]).html(times[list[i].toLowerCase()]);
+				}
+				//$("#timeDetails").html(html);
+			});
+		</script>
+
+		
+      </head>
+      <body>
+		<div data-role="page" id="showTime">
+			<div data-role="header">
+				<h1>Salaat</h1>
+				<div data-role="navbar">
+                                        <ul>
+                                                <li><a href="index.html">Home</a></li>
+                                                <li><a href="index.html">News Today</a></li>
+                                                <li><a href="contactUs.html">Contact Us</a></li>
+                                        </ul>
+                                </div>
+			</div>
+			<div data-role="content">
+			     <div align="center">
+				  <div id="desktop">	       
+					<div class="localnav">
+					    <select onchange="update()" data-native-menu="false" class="localnav">
+						<option selected="selected" value="MWL">Muslim World League (MWL)</option>
+						<option value="ISNA">Islamic Society of North America (ISNA)</option>
+						<option value="Egypt">Egyptian General Authority of Survey</option>
+						<option value="Makkah">Umm al-Qura University, Makkah</option>
+						<option value="Karachi">University of Islamic Sciences, Karachi</option>
+					    </select>  
+					   <select onchange="update()" data-native-menu="false">
+						<option value="Makkah">Hanafi</option>
+						<option value="Karachi">Others</option>
+					    </select>
+  					</div>
+					<ul data-role="controlgroup" id="timeDetails">
+				           <li><a data-role="button">Fajr:<span id="Fajr"></span></a></li>
+				           <li><a data-role="button">Sunrise:<span id="Sunrise"></span></a></li>
+				           <li><a data-role="button">Zohr:<span id="Dhuhr"></span></a></li>
+				           <li><a data-role="button">Asr:<span id="Asr"></span></a></li>
+				           <li><a data-role="button">Maghrib:<span id="Maghrib"></span></a></li>
+				           <li><a data-role="button">Isha:<span id="Isha"></span></a></li>
+				           <li><a data-role="button">Midnight:<span id="Midnight"></span></a></li>
+					 </ul>
+				  </div>     
+			    </div>
+
+			</div>
+			<div data-role="footer" class="footer">
+			   <p align="center">Madina</p>
+			</div>
+		</div>
+       </body>
+</html>

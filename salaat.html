@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+      <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <title>Madina</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1"> 
+                <link rel="stylesheet" href="scripts/jquery.mobile.min.css" />
+                <link rel="stylesheet" href="scripts/style.css" />
+	        <script src="scripts/jquery.js"></script>
+                <script src="scripts/jquery.mobile.min.js"></script>
+      </head>
+      <body>
+             <div data-role="page">
+                        <div data-role="header">
+                                <h1>Salaat</h1>
+				 <div data-role="navbar">
+                                        <ul>
+                                                <li><a href="index.html">Home</a></li>
+                                                <li><a href="index.html">News Today</a></li>
+                                                <li><a href="contactUs.html">Contact Us</a></li>
+                                        </ul>
+                                </div>
+                        </div>
+                        <div data-role="content" id="pageContent" align="center">
+			      <div id="desktop">	
+				  <div data-role="controlgroup">
+				     <input type="button" onClick="localStorage.setItem('date','today');$.mobile.changePage('showTime.html')"  value="Today's Time"/>
+				     <input type="button" onClick="localStorage.setItem('date','tomorrow');$.mobile.changePage('showTime.html')"  value="Tomorrow's Time"/>
+				     <a href="setDate.html" data-role="button">Set Date </a>
+				  </div>
+			      </div>
+                        </div>
+                        <div data-role="footer" class="footer">
+                           <p align="center">Madina</p>
+                        </div>
+             </div>
+    </body>
+</html> 
+
